@@ -128,7 +128,11 @@ public class MainActivity extends AppCompatActivity {
         dot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                numV.setText(numV.getText()+".");
+              if(oneDot()){
+                  numV.setText(numV.getText());
+              }else{
+                  numV.setText(numV.getText()+".");
+              }
             }
         });
 
@@ -244,20 +248,8 @@ public class MainActivity extends AppCompatActivity {
 
                     if(!numV.getText().toString().equals("-") || !his.getText().toString().equals("Enter a number")) {
                         // check double dot or not
-                        if ( numV.getText().toString().charAt(0)=='-' && numV.getText().toString().charAt(1)=='.' ||
-                                numV.getText().length()>=4 && numV.getText().toString().charAt(0)=='-' && numV.getText().toString().charAt(3)=='.') {
-                            // check double dot or not negative number
-                            if(numV.getText().toString().charAt(2) == '.' && numV.getText().toString().charAt(3) == '.' ||
-                                    numV.getText().toString().charAt(1) == '.' && numV.getText().toString().charAt(2) == '.' ) {
-                                Toast.makeText(MainActivity.this, "ERROR", Toast.LENGTH_SHORT).show();
-                                Log.i("else", "check double dot or not negative number ");
-                            }
-                            Log.i("else", "check double dot or not");
 
-                        }else if(numV.getText().length()>=3 && numV.getText().toString().charAt(1) == '.' && numV.getText().toString().charAt(2) == '.' ||
-                                numV.getText().toString().charAt(0) == '.' && numV.getText().toString().charAt(1) =='.'){
-                            Toast.makeText(MainActivity.this, "ERROR", Toast.LENGTH_SHORT).show();
-                        }else{
+                       if(oneDot()){
                                 first = Double.parseDouble((String) numV.getText());
                                 primary = String.format("%.2f", first);
                                 int t = (int) first;
@@ -600,5 +592,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+    }
+    public  boolean oneDot(){
+        boolean check=false;
+        if(numV.getText().toString().length()==1 && numV.getText().toString().charAt(0)=='.' || numV.getText().toString().length()==2 && numV.getText().toString().charAt(1)=='.'){
+                check=true;
+        }
+        return check;
     }
 }

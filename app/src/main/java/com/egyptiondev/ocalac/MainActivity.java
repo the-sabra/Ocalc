@@ -520,7 +520,8 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else {
                     if (numV.getText().length() >= 3 && numV.getText().toString().charAt(1) == '.' && numV.getText().toString().charAt(2) == '.' ||
-                            numV.getText().toString().charAt(0) == '.' && numV.getText().toString().charAt(1) == '.') {
+                        numV.getText().toString().length()==1 && numV.getText().toString().charAt(0) == '.'   ||
+                        numV.getText().toString().charAt(0) == '.' && numV.getText().toString().charAt(1) == '.' ) {
                         Toast.makeText(MainActivity.this, "ERROR", Toast.LENGTH_SHORT).show();
                     } else {
                         second = Double.parseDouble((String) numV.getText());

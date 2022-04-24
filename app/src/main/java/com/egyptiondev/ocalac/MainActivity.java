@@ -143,8 +143,6 @@ public class MainActivity extends AppCompatActivity {
                     first= 0;
                     numV.setText(null);
                     his.setText(null);
-//                    second= Double.parseDouble(null);
-                    Log.i("acbtn", "ac is Pressed");
                 }
             }
         });
@@ -172,30 +170,12 @@ public class MainActivity extends AppCompatActivity {
                         !TextUtils.isEmpty(numV.getText().toString()) && TextUtils.isEmpty(his.getText().toString())
                                 && !numV.getText().toString().equals("-") ){
 
-                    // check double dot or not
 
-
-                        // if to the negative
-
+                    // if Error massage is show
                     if(!numV.getText().toString().equals("-") || !his.getText().toString().equals("Enter a number")) {
-                        // check double dot or not
-                        if ( numV.getText().toString().charAt(0)=='-' && numV.getText().toString().charAt(1)=='.' ||
-                                numV.getText().length()>=4 && numV.getText().toString().charAt(0)=='-' && numV.getText().toString().charAt(3)=='.') {
-                            // check double dot or not negative number
-                            if(numV.getText().toString().charAt(2) == '.' && numV.getText().toString().charAt(3) == '.' ||
-                                    numV.getText().toString().charAt(1) == '.' && numV.getText().toString().charAt(2) == '.' ) {
-
-                                Toast.makeText(MainActivity.this, "ERROR", Toast.LENGTH_SHORT).show();
-
-                                Log.i("else", "check double dot or not negative number ");
-                            }
-                            Log.i("else", "check double dot or not");
-
-                        }else if(numV.getText().length()>=3 && numV.getText().toString().charAt(1) == '.' && numV.getText().toString().charAt(2) == '.' ||
-                                numV.getText().toString().charAt(0) == '.' && numV.getText().toString().charAt(1) =='.'){
-                            Toast.makeText(MainActivity.this, "ERROR", Toast.LENGTH_SHORT).show();
-                        }else{
-                                    first = Double.parseDouble((String) numV.getText());
+                        // check for one dot only without any number
+                        if(!numV.getText().toString().equals(".")){
+                            first = Double.parseDouble((String) numV.getText());
                                 primary = String.format("%.2f", first);
                                 int t = (int) first;
                                 if (t == first) {
@@ -244,26 +224,26 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                        // if to the negative
-
+                         // if Error massage is show
                     if(!numV.getText().toString().equals("-") || !his.getText().toString().equals("Enter a number")) {
-                        // check double dot or not
-
-                       if(oneDot()){
-                                first = Double.parseDouble((String) numV.getText());
-                                primary = String.format("%.2f", first);
-                                int t = (int) first;
-                                if (t == first) {
-                                    his.setText("" + (int) first + "+");
-                                } else if (t < first) {
-                                    his.setText("" + first + "+");
-                                } else if (t > first) {
-                                    his.setText("" + first + "+");
-                                }
-                                numV.setText("");
-                                opratore = "+";
-                           }
+                        // check for one dot only without any number
+                        if(!numV.getText().toString().equals(".")) {
+                            first = Double.parseDouble((String) numV.getText());
+                            primary = String.format("%.2f", first);
+                            int t = (int) first;
+                            if (t == first) {
+                                his.setText("" + (int) first + "+");
+                            } else if (t < first) {
+                                Log.i("ifmul", "ifmul is work1 ");
+                                his.setText("" + first + "+");
+                            } else if (t > first) {
+                                his.setText("" + first + "+");
+                                Log.i("ifmul", "ifmul is work1 ");
+                            }
+                            numV.setText("");
+                            opratore = "+";
                         }
+                    }
 
                 }else if( !TextUtils.isEmpty(his.getText().toString()) && TextUtils.isEmpty(numV.getText().toString()) &&
                         !his.getText().toString().equals("Enter a number")){
@@ -298,24 +278,10 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                        // if to the negative
-
+                        // if Error massage is show
                     if(!numV.getText().toString().equals("-") || !his.getText().toString().equals("Enter a number")) {
-                        // check double dot or not
-                        if ( numV.getText().toString().charAt(0)=='-' && numV.getText().toString().charAt(1)=='.' ||
-                                numV.getText().length()>=4 && numV.getText().toString().charAt(0)=='-' && numV.getText().toString().charAt(3)=='.') {
-                            // check double dot or not negative number
-                            if(numV.getText().toString().charAt(2) == '.' && numV.getText().toString().charAt(3) == '.' ||
-                                    numV.getText().toString().charAt(1) == '.' && numV.getText().toString().charAt(2) == '.' ) {
-                                Toast.makeText(MainActivity.this, "ERROR", Toast.LENGTH_SHORT).show();
-                                Log.i("else", "check double dot or not negative number ");
-                            }
-                            Log.i("else", "check double dot or not");
-
-                        }else if(numV.getText().length()>=3 && numV.getText().toString().charAt(1) == '.' && numV.getText().toString().charAt(2) == '.' ||
-                                numV.getText().toString().charAt(0) == '.' && numV.getText().toString().charAt(1) =='.'){
-                            Toast.makeText(MainActivity.this, "ERROR", Toast.LENGTH_SHORT).show();
-                        }else {
+                        // check for one dot only without any number
+                        if(!numV.getText().toString().equals(".")){
                                 first = Double.parseDouble((String) numV.getText());
                                 primary = String.format("%.2f", first);
                                 int t = (int) first;
@@ -330,7 +296,7 @@ public class MainActivity extends AppCompatActivity {
                                 }
                                 numV.setText("");
                                 opratore = "x";
-                            }
+                               }
                         }
 
                 }else if( !TextUtils.isEmpty(his.getText().toString()) && TextUtils.isEmpty(numV.getText().toString()) &&
@@ -362,41 +328,26 @@ public class MainActivity extends AppCompatActivity {
                 String primary;
                 if(!TextUtils.isEmpty(numV.getText().toString()) && !TextUtils.isEmpty(his.getText().toString()) ||
                     !TextUtils.isEmpty(numV.getText().toString()) && TextUtils.isEmpty(his.getText().toString())){
-                         Log.i("else0", "else is work0 ");
 
 
-
-                        // if to the negative
+                        // if Error massage is show
                     if(!numV.getText().toString().equals("-") || !his.getText().toString().equals("Enter a number")) {
-                        // check double dot or not
-                        if ( numV.getText().toString().charAt(0)=='-' && numV.getText().toString().charAt(1)=='.' ||
-                                numV.getText().length()>=4 && numV.getText().toString().charAt(0)=='-' && numV.getText().toString().charAt(3)=='.') {
-                            // check double dot or not negative number
-                            if(numV.getText().toString().charAt(2) == '.' && numV.getText().toString().charAt(3) == '.' ||
-                                    numV.getText().toString().charAt(1) == '.' && numV.getText().toString().charAt(2) == '.' ) {
-                                Toast.makeText(MainActivity.this, "ERROR", Toast.LENGTH_SHORT).show();
-                                Log.i("else", "check double dot or not negative number ");
+                        // check for one dot only without any number
+                        if (!numV.getText().toString().equals(".")) {
+                            first = Double.parseDouble(numV.getText().toString());
+                            primary = String.format("%.2f", first);
+                            int t = (int) first;
+                            if (t == first) {
+                                his.setText("" + (int) first + "-");
+                            } else if (t < first) {
+                                his.setText("" + first + "-");
+                            } else if (t > first) {
+                                his.setText("" + first + "-");
                             }
-                            Log.i("else", "check double dot or not");
-
-                        }else if(numV.getText().length()>=3 && numV.getText().toString().charAt(1) == '.' && numV.getText().toString().charAt(2) == '.' ||
-                                numV.getText().toString().charAt(0) == '.' && numV.getText().toString().charAt(1) =='.'){
-                            Toast.makeText(MainActivity.this, "ERROR", Toast.LENGTH_SHORT).show();
-                        }else {
-                                first = Double.parseDouble((String) numV.getText());
-                                primary = String.format("%.2f", first);
-                                int t = (int) first;
-                                if (t == first) {
-                                    his.setText("" + (int) first + "-");
-                                } else if (t < first) {
-                                    his.setText("" + first + "-");
-                                } else if (t > first) {
-                                    his.setText("" + first + "-");
-                                }
-                                numV.setText("");
-                                opratore = "-";
-                            }
+                            numV.setText("");
+                            opratore = "-";
                         }
+                    }
 
                 }else if( !TextUtils.isEmpty(his.getText().toString()) && TextUtils.isEmpty(numV.getText().toString() ) &&
                         !his.getText().toString().equals("Enter a number")){
@@ -428,27 +379,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String primary;
-                if(!TextUtils.isEmpty(numV.getText().toString()) && !TextUtils.isEmpty(his.getText().toString()) ||
+                if (!TextUtils.isEmpty(numV.getText().toString()) && !TextUtils.isEmpty(his.getText().toString()) ||
                         !TextUtils.isEmpty(numV.getText().toString()) && TextUtils.isEmpty(his.getText().toString())
-                && !numV.getText().toString().equals("-")){
+                                && !numV.getText().toString().equals("-")) {
 
 
-                    if(!numV.getText().toString().equals("-") || !his.getText().toString().equals("Enter a number")) {
-                        // check double dot or not
-                        if ( numV.getText().toString().charAt(0)=='-' && numV.getText().toString().charAt(1)=='.' ||
-                                numV.getText().length()>=4 && numV.getText().toString().charAt(0)=='-' && numV.getText().toString().charAt(3)=='.') {
-                        // check double dot or not negative number
-                            if(numV.getText().toString().charAt(2) == '.' && numV.getText().toString().charAt(3) == '.' ||
-                                    numV.getText().toString().charAt(1) == '.' && numV.getText().toString().charAt(2) == '.' ) {
-                                Toast.makeText(MainActivity.this, "ERROR", Toast.LENGTH_SHORT).show();
-                                Log.i("else", "check double dot or not negative number ");
-                            }
-                                Log.i("else", "check double dot or not");
-
-                        }else if(numV.getText().length()>=3 && numV.getText().toString().charAt(1) == '.' && numV.getText().toString().charAt(2) == '.' ||
-                                numV.getText().toString().charAt(0) == '.' && numV.getText().toString().charAt(1) =='.'){
-                             Toast.makeText(MainActivity.this, "ERROR", Toast.LENGTH_SHORT).show();
-                        }else{
+                    if (!numV.getText().toString().equals("-") || !his.getText().toString().equals("Enter a number")) {
+                        // check for one dot only without any number
+                        if(!numV.getText().toString().equals(".")) {
                             first = Double.parseDouble(numV.getText().toString());
                             primary = String.format("%.2f", first);
                             int t = (int) first;
@@ -464,10 +402,11 @@ public class MainActivity extends AppCompatActivity {
                                 his.setText("" + first + "/");
                                 Log.i("else2 ", "else is work divide  ");
                             }
-                        numV.setText("");
-                        opratore = "/";
+                            numV.setText("");
+                            opratore = "/";
                         }
-                    }
+
+                }
 
                 }else if( !TextUtils.isEmpty(his.getText().toString()) && TextUtils.isEmpty(numV.getText().toString()) &&
                         !his.getText().toString().equals("Enter a number")){
@@ -593,11 +532,16 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+    //  check one dot only in number
     public  boolean oneDot(){
         boolean check=false;
-        if(numV.getText().toString().length()==1 && numV.getText().toString().charAt(0)=='.' || numV.getText().toString().length()==2 && numV.getText().toString().charAt(1)=='.'){
-                check=true;
-        }
+         for(int i =0 ; i<numV.getText().toString().length();i++) {
+             if (numV.getText().toString().length() > 0 && numV.getText().toString().charAt(i) <= '.'
+                    &&  numV.getText().toString().charAt(i) != '-'||
+                     numV.getText().toString().length() >= 2 && numV.getText().toString().charAt(1) =='.') {
+                 check = true;
+             }
+         }
         return check;
     }
 }
